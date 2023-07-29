@@ -65,13 +65,13 @@ The ChessWeave evaluation software utilizes the FEN (Forsyth-Edwards Notation) s
 
 Apart from the 'Move' actions, there are several other transaction types (like 'Resign', 'DrawOffer', etc.) that the software handles based on their specific semantics in the game of chess:
 
-- **Resignation (Resign):** Upon detecting a 'Resign' transaction, the software immediately ends the game and declares the other player the winner.
+- **Resignation :** Upon detecting a 'Resign' transaction, the software immediately ends the game and declares the other player the winner.
 
-- **Draw Offer (DrawOffer):** A 'DrawOffer' transaction puts the game in a state where the other player can accept or decline the draw offer. The game remains in this state until a 'DrawAccept' or 'DrawDecline' transaction is encountered.
+- **Draw Offer :** A 'DrawOffer' transaction puts the game in a state where the other player can accept or decline the draw offer. The game remains in this state until a 'DrawAccept' or 'DrawDecline' transaction is encountered.
 
-- **Draw Acceptance (DrawAccept):** A 'DrawAccept' transaction, following a 'DrawOffer', ends the game immediately with the result recorded as a draw.
+- **Draw Acceptance :** A 'DrawAccept' transaction, following a 'DrawOffer', ends the game immediately with the result recorded as a draw.
 
-- **Draw Declination (DrawDecline):** A 'DrawDecline' transaction, following a 'DrawOffer', allows the game to proceed normally.
+- **Draw Declination :** A 'DrawDecline' transaction, following a 'DrawOffer', allows the game to proceed normally.
 
 This approach ensures that only legal moves, in accordance with the rules of chess, alter the game state. It enforces the rules of the game and upholds the integrity of the game as it unfolds on the Arweave blockchain.
 
