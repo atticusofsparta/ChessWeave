@@ -17,11 +17,11 @@ Below are the descriptions of various actions that can be performed in a chess g
 | Draw Declined       | Chess    | [UID]  | DrawDecline | N/A | [player declining draw] |
 | Game Termination    | Chess    | [UID]  |  Terminate  | N/A | [result of the game] |
 
-Remember that the 'MoveNumber' and 'Move' tags would need to be incremented and updated with each move. For the 'Player' tag, use the identifier of the player making the move or performing the action.
+
 
 This protocol allows for a full record of a chess game using Arweave transaction tags.
 
 URLs:
 1. https://en.wikipedia.org/wiki/Algebraic_notation_(chess)
-2. https://docs.arweave.org/info/architecture
+
 
