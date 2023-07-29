@@ -3,7 +3,7 @@ This repo is an SDK for evaluating the arweave chess-weave protocol. This functi
 
 Sure, below are the descriptions of various actions that can be performed in a chess game and the corresponding Arweave transaction tag structure.
 
-| Chess Action      | Application | GameID    | MoveNumber | Action     | Move | Player  |
+| Chess-Action      | App-Name | GameID    | MoveNumber | Action     | Move | Player  |
 |-------------------|-------------|-----------|------------|------------|------|---------|
 | Game Initialization | Chess       | [unique game ID] | 0          | Initialize | N/A  | [White and Black player identifiers] |
 | Normal Move        | Chess       | [unique game ID] | [Move Number] | Move   | [SAN of the move] | [player making the move] |
