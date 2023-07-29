@@ -48,34 +48,35 @@ This transaction is a response to the 'Draw Offer' transaction, indicating that 
 
 Transaction to terminate the game, executable only by the games creator.
 
-## Evaluator Software
-The evaluation software for ChessWeave uses the FEN (Forsyth-Edwards Notation) string representation of the game's current state. The FEN string of the standard start position is the default state. This software essentially validates the sequence of moves made in a game.
+## ChessWeave Evaluation Software
 
-The process works as follows:
+The ChessWeave evaluation software utilizes the FEN (Forsyth-Edwards Notation) string to represent the game's current state. By default, the FEN string of the standard start position is the initial game state. The main purpose of the software is to validate the sequence of moves made in a chess game.
 
-The software starts with the initial game state as represented by the default FEN string.
+### Process Overview
 
-It fetches all transactions associated with the game in chronological order.
+1. The software initializes with the default FEN string representing the initial game state.
+2. It fetches all transactions associated with the game in chronological order.
+3. For each 'Move' action transaction, the software verifies if the move (represented in SAN - Standard Algebraic Notation) is legal for the current game state.
+   - The validation is performed by simulating the move on the internal representation of the chess board.
+   - If the move is legal (as per the rules of chess), the internal game state is updated to reflect the move, and the software proceeds to the next transaction.
+   - If the move is not legal, the move is ignored, and the game state remains unchanged. The software then awaits the player's next move. If no legal move is made before the player's time runs out, the player is considered to have lost the game due to time overrun.
 
-For each transaction with the 'Action' tag set to 'Move', it checks if the 'Move' tag (which should contain a move in SAN - Standard Algebraic Notation) represents a legal move in the current game state.
+### Handling Other Transaction Types
 
-To perform this validation, the software simulates the move on the internal representation of the chess board. If the move is legal (according to the rules of chess), the internal game state is updated to reflect the move, and the software proceeds to the next transaction.
+Apart from the 'Move' actions, there are several other transaction types (like 'Resign', 'DrawOffer', etc.) that the software handles based on their specific semantics in the game of chess:
 
-If the move is not legal, the move is ignored and does not update the game state. The software then waits for the player's next move. If the player's move time runs out without a legal move being made, the player may be declared to have lost the game due to exceeding the time limit.
+- **Resignation (Resign):** Upon detecting a 'Resign' transaction, the software immediately ends the game and declares the other player the winner.
 
-Other types of transactions (like 'Resign', 'DrawOffer', etc.) are handled based on their specific semantics in the game of chess:
+- **Draw Offer (DrawOffer):** A 'DrawOffer' transaction puts the game in a state where the other player can accept or decline the draw offer. The game remains in this state until a 'DrawAccept' or 'DrawDecline' transaction is encountered.
 
-  Resignation (Resign): A player can choose to resign at any point in the game, regardless of the game state. If a 'Resign' transaction is detected, the evaluation software will end the game immediately and declare the other   player as the winner.
+- **Draw Acceptance (DrawAccept):** A 'DrawAccept' transaction, following a 'DrawOffer', ends the game immediately with the result recorded as a draw.
 
-  Draw Offer (DrawOffer): If a 'DrawOffer' transaction is detected, the game enters a state where the opposing player has the option to accept or decline the draw offer. The evaluation software will keep the game in this    state until it encounters either a 'DrawAccept' or 'DrawDecline' transaction.
+- **Draw Declination (DrawDecline):** A 'DrawDecline' transaction, following a 'DrawOffer', allows the game to proceed normally.
 
-  Draw Acceptance (DrawAccept): When a 'DrawAccept' transaction is detected, the evaluation software will immediately end the game and record the result as a draw. It's important to note that a 'DrawAccept' transaction is   only valid if it's preceded by a 'DrawOffer' transaction from the opposing player.
+This approach ensures that only legal moves, in accordance with the rules of chess, alter the game state. It enforces the rules of the game and upholds the integrity of the game as it unfolds on the Arweave blockchain.
 
-  Draw Declination (DrawDecline): If a 'DrawDecline' transaction is detected, the game will exit the draw offer state and continue as normal. Similar to the 'DrawAccept', a 'DrawDecline' transaction is only valid if it's   preceded by a 'DrawOffer' transaction from the opposing player.
+> Note: The implementation of the evaluation software requires a nuanced understanding of chess rules and a comprehensive chess library to validate moves and manage game states.
 
-This approach ensures that only legal moves, as per the rules of chess, can alter the game state. It enforces the game rules and maintains the integrity of the game as it's played out on the Arweave blockchain.
-
-Please note that the implementation of the evaluation software requires a sophisticated understanding of chess rules and a comprehensive chess library to validate moves and manage game states.
 
 
 
