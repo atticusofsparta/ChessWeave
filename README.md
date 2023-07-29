@@ -3,19 +3,21 @@ This repo is an SDK for evaluating the arweave chess-weave protocol. This functi
 
 Below are the descriptions of various actions that can be performed in a chess game and the corresponding Arweave transaction tag structure.
 
-| Chess-Action        | App-Name | GameID |    Action   |    Move    | Player Address  |
-|---------------------|----------|--------|-------------|------------|-----------------|
-| Game Initialization | Chess    | [UID]  | Initialize  | N/A        | [White and Black player identifiers] |
-| Normal Move         | Chess    | [UID]  |    Move     | SAN        | [player making the move] |
-| Castling            | Chess    | [UID]  |    Move     | [SAN of the move (O-O for kingside, O-O-O for queenside)] | [player making the move] |
-| Capture             | Chess    | [UID]  |    Move     | [SAN of the move (x denotes capture)] | [player making the move] |
-| Check               | Chess    | [UID]  |    Move     | [SAN of the move (+ denotes check)] | [player making the move] |
-| Checkmate           | Chess    | [UID]  |    Move     | [SAN of the move (# denotes checkmate)] | [player making the move] |
-| Player Resigns      | Chess    | [UID]  |   Resign    | N/A        | [player resigning] |
-| Draw Offer          | Chess    | [UID]  |  DrawOffer  | N/A        | [player offering draw] |
-| Draw Accepted       | Chess    | [UID]  |  DrawAccept | N/A        | [player accepting draw] |
-| Draw Declined       | Chess    | [UID]  | DrawDecline | N/A        | [player declining draw] |
-| Game Termination    | Chess    | [UID]  |  Terminate  | N/A        | [result of the game] |
+| Description         | App-Name | Game-ID |    Action   |  Move  |  White-Address       |  Black-Address       |
+|---------------------|----------|---------|-------------|--------|----------------------|----------------------|
+| Game Initialization | Chess    | [UID]   | Initialize  |  N/A   | [Creator or blank]   | [Creator or blank]   | 
+| Join                | Chess    | [UID]   |    Join     |  SAN   | [New Player Address] | [New Player Address] |
+| Move                | Chess    | [UID]   |    Move     |  SAN   |         N/A          |          N/A         |
+| Player Resigns      | Chess    | [UID]   |   Resign    |  N/A   |         N/A          |          N/A         |
+| Draw Offer          | Chess    | [UID]   |  DrawOffer  |  N/A   |         N/A          |          N/A         |
+| Draw Accepted       | Chess    | [UID]   |  DrawAccept |  N/A   |         N/A          |          N/A         |
+| Draw Declined       | Chess    | [UID]   | DrawDecline |  N/A   |         N/A          |          N/A         |
+| Game Termination    | Chess    | [UID]   |  Terminate  |  N/A   |         N/A          |          N/A         |
+
+### Game Initialization
+
+Initial transaction to start a new game on Arweave. This generates a game ID as a UUID, with the creators address being put in either black or white address tag.
+
 
 
 
