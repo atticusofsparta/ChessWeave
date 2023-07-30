@@ -1,0 +1,28 @@
+{
+  "name": "chessweave",
+  "version": "1.0.0",
+  "description": "ChessWeave protocol is for creating and interacting with chess games on arweave",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atticusofsparta/ChessWeave.git"
+  },
+  "keywords": [
+    "chess",
+    "arweave"
+  ],
+  "author": "atticus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/atticusofsparta/ChessWeave/issues"
+  },
+  "homepage": "https://github.com/atticusofsparta/ChessWeave#readme",
+  "dependencies": {
+    "eslint": "^8.46.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
+  }
+}
