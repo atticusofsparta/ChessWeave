@@ -29,6 +29,9 @@ Initial transaction to start a new game on Arweave. This generates a game ID as 
 | Maximum Move Count          | The maximum number of moves in a game              | User-defined  |
 | WebRTC Connection Info      | Information for establishing a P2P connection      | User-defined  |
 
+#### WebRTC Connection Info (WIP)
+
+the stun/turn servers to use for a webrtc P2P connection. This info and available tech can change over time and depend on individual client implementation.
 
 
 ### Join
